@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {connect} from 'react-redux'
 
-function App() {
+const App = (props) => {
+  console.log(props)
   return (
     <div className="App">
       <header className="App-header">
@@ -23,4 +25,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps=(state)=>{
+  return state.app
+}
+const mapDispatchToProps=()=>{
+  
+}
+
+export default connect(state=>state.app)(App);
