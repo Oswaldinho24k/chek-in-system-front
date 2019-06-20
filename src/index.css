@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+*{
+  box-sizing: border-box !important;
+}
+:root{
+  --runa-color:#7a6ff0;
+}
+
+/*Login Styles*/
+.login-page{  
+  width:100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--runa-color)
+}
+
+.login-container-form{    
+  min-width: 300px;
+  text-align: center;
+  background-color: white;
+  padding:2%;
+  border-radius: 5px;
+}
+
