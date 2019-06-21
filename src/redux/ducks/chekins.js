@@ -46,7 +46,7 @@ export const chekinsReducer = (state = initialState, action) => {
             return{
                 ...state,
                 status:"success",
-                data:[...state.data, action.payload]
+                data:[action.payload, ...state.data]
             }
         }
         case UPDATE_SUCCESS:{            
@@ -105,7 +105,7 @@ export const postSuccess=(chekin)=>{
     }
 }
 //update
-export const updateChekin=(chekin)=>{        
+export const updateChekin=(chekin)=>{    
     return{
         type:UPDATE,
         payload:chekin

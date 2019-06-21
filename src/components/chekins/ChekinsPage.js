@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 import { postChekin, updateChekin, deleteChekin } from '../../redux/ducks/chekins';
 import { Divider } from 'antd';
 
-const ChekinsPage = ({users,chekins, postChekin, deleteChekin, updateChekin}) => {
+const ChekinsPage = ({users,chekins, postChekin, deleteChekin, updateChekin, logueduser}) => {
     const onSubmit = (values) => {        
         //add entry datetime
         values['entry'] = new Date()        
@@ -33,14 +33,15 @@ const ChekinsPage = ({users,chekins, postChekin, deleteChekin, updateChekin}) =>
                 <Divider type={'vertical'}/>
                 <ChekinForm onSubmit={onSubmit} users={users.data}/>
             </div>
-            <ChekinsList chekins={chekins.data} onUpdate={onUpdate} onDelete={onDelete}/>           
+            <ChekinsList chekins={chekins.data} onUpdate={onUpdate} onDelete={onDelete} user={logueduser}/>           
         </>
     )
 }
 const mapStateToProps=(state)=>{
     return {
         users:state.users,
-        chekins:state.chekins
+        chekins:state.chekins,
+        logueduser:state.auth.data
     }
   }
   const mapDispatchToProps=()=>{

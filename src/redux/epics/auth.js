@@ -36,7 +36,7 @@ export const loginUser=(action$, {getState, dispatch})=>{
                     return loginSuccess(resp.response)
                 }),
                 catchError(err=>{                    
-                    message.error(err.response.detail || err.response.message)
+                    if(err.response)message.error(err.response.detail || err.response.message)
                     return of(fetchFailed(err.response.message))
                 })
             )
@@ -53,8 +53,8 @@ export const logoutUser=(action$, {getState, dispatch})=>{
         ofType(LOGOUT),        
         switchMap(({payload})=>{        
             const ajax$ = ajax({
-                url: `${baseUrl}loguin`,
-                method: 'POST',
+                url: `${baseUrl}logout`,
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'rxjs-custom-header': 'Rxjs'
@@ -62,9 +62,9 @@ export const logoutUser=(action$, {getState, dispatch})=>{
                 body:payload
             }).pipe(                
                 map(resp => {
-                    message.success(`Good Bye ${getState().data.username}`)
+                    message.success(`Good Bye`)
                     localStorage.removeItem('loguedUser')
-                    return logoutSuccess()
+                    return logoutSuccess(undefined)
                 }),
                 catchError(err=>{                    
                     message.error(err.response.detail || err.response.message)

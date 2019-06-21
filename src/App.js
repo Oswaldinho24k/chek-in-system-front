@@ -4,19 +4,19 @@ import './App.css';
 import {connect} from 'react-redux'
 import { Routes } from './Routes';
 
-const App = (props) => {  
+const App = ({loguedUser}) => {    
   return (
     <>                 
-      <Routes/>
+      <Routes loguedUser={loguedUser}/>
     </>
   );
 }
 
 const mapStateToProps=(state)=>{
-  return state
+  return {
+    loguedUser:state.auth.data
+  }
 }
-const mapDispatchToProps=()=>{
-  
-}
+
 
 export default connect(mapStateToProps, {})(App);

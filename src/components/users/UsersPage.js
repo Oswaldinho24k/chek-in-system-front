@@ -8,7 +8,7 @@ import {message, Divider} from 'antd'
 
 const UsersPage = ({users, postUser, deleteUser, updateUser}) => {
     const onSubmit = (vals) =>{
-        vals['password'] = 'password123'
+        vals['password'] = Math.random().toString(36)
         postUser(vals)
     }
     const onUpdate = (id) => {        
@@ -38,7 +38,7 @@ const UsersPage = ({users, postUser, deleteUser, updateUser}) => {
 
 const mapStateToProps=(state)=>{
     return{
-        users:state.users
+        users:state.users,        
     }
 }
 

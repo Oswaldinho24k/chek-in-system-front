@@ -1,18 +1,16 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import DashboardPage from './components/dashboard/DashboardPage';
 import LoginPage from './components/login/LoginPage';
 import ChekinsPage from './components/chekins/ChekinsPage';
 import UserDetail from './components/users/UserDetail';
 import UsersPage from './components/users/UsersPage';
 
-export const Routes = () => {
+export const Routes = ({loguedUser}) => {
     return (
-        <Switch>
-            <Route exact path={'/'} component={LoginPage}/>
-            <Route path={'/login'} component={LoginPage}/>
-            <Route path={'/dashboard'} component={DashboardPage}/>            
-            {/* <Route path={'/dashboard'} render={props => user ? (<DashboardPage {...props} />) : (<Redirect to={'/login'}/>)}/>             */}
+        <Switch>            
+            <Route path={'/login'} render={props => loguedUser ? (<Redirect to={'/dashboard/profile'}/>)  : (<LoginPage {...props} />)}/>            
+            <Route path={'/dashboard'} render={props => loguedUser ? (<DashboardPage {...props} />) : (<Redirect to={'/login'}/>)}/>            
         </Switch>
     )
 }

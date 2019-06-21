@@ -3,9 +3,9 @@ import LoginForm from './LoginForm';
 import {connect} from 'react-redux'
 import {login} from '../../redux/ducks/auth'
 
-const LoginPage = ({login}) => {
+const LoginPage = ({login, history}) => {
     const onSubmit=(values)=>{
-        login(values)
+        login(values)        
     }
     return (
         <div className="login-page">

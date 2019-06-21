@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import SideMenu from './SideMenu';
 import { AdminRoutes } from '../../Routes';
+import {connect} from 'react-redux'
+import {logout} from '../../redux/ducks/auth'
 
 
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-const DashboardPage = ({location, match, history}) => {    
+const DashboardPage = ({location, match, history, logueduser,logout }) => {   
+  
     
     const [collapsed, setCollapsed] = useState(true)
 
@@ -19,7 +22,7 @@ const DashboardPage = ({location, match, history}) => {
         <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
-          <SideMenu location={location}/>
+          <SideMenu location={location} user={logueduser} logout={logout} history={history}/>
         </Sider>
         <Layout>
           {/* <Header style={{ background: '#fff', padding: 0 }} /> */}
@@ -35,4 +38,10 @@ const DashboardPage = ({location, match, history}) => {
     )
 }
 
-export default DashboardPage
+const mapStateToProps=(state)=>{
+    return{
+        logueduser:state.auth.data
+    }
+}
+
+export default connect(mapStateToProps,{logout})(DashboardPage)

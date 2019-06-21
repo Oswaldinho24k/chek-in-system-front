@@ -98,10 +98,10 @@ export const logout=()=>{
         payload:{}
     }
 }
-export const logoutSuccess=()=>{
+export const logoutSuccess=(obj)=>{
     return{
         type:LOGOUT_SUCCESS,
-        payload:{}
+        payload:obj
     }
 }
 
