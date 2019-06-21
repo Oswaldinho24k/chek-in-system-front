@@ -1,10 +1,11 @@
 import React from 'react'
+import {Button} from 'antd'
 
 const ChekinsFilters = () => {
     return (
-        <div className="table-operations">
-            filters
-        </div>
+        <>
+            The filters and Search
+        </>
     )
 }
 

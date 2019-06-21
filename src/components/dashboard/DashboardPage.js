@@ -8,8 +8,8 @@ import { AdminRoutes } from '../../Routes';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-const DashboardPage = (props) => {    
-    const {location} = props
+const DashboardPage = ({location, match, history}) => {    
+    
     const [collapsed, setCollapsed] = useState(true)
 
     const onCollapse = () =>{
@@ -19,7 +19,7 @@ const DashboardPage = (props) => {
         <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
-          <SideMenu/>
+          <SideMenu location={location}/>
         </Sider>
         <Layout>
           {/* <Header style={{ background: '#fff', padding: 0 }} /> */}
@@ -29,7 +29,7 @@ const DashboardPage = (props) => {
             </Breadcrumb>
             <AdminRoutes/>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>Developed with 🔥 by Oswaldinho 🍕🤓</Footer>
         </Layout>
       </Layout>
     )

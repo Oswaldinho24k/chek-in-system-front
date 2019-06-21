@@ -16,17 +16,20 @@ code {
   box-sizing: border-box !important;
 }
 :root{
-  --runa-color:#7a6ff0;
+  --base-color:#1890ff;
 }
 
 /*Login Styles*/
-.login-page{  
+.login-page{
+  font-size: 2rem;
   width:100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--runa-color)
+  background-color: var(--base-color)
+  
 }
 
 .login-container-form{    

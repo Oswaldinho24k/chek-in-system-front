@@ -2,31 +2,42 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import {combineEpics, createEpicMiddleware} from 'redux-observable'
 import {of} from 'rxjs'
 import {compose} from 'redux'
-import { beersReducer } from "./ducks/beers";
-import {configReducer} from "./ducks/config";
-import { fetchBeersEpic } from "./epics/fetchBeers";
-import { fetchChekins } from "./epics/chekins";
-import { fetchUsers } from "./epics/users";
+
+import { fetchChekins, postChekin, deleteChekin, updateChekin } from "./epics/chekins";
+import { fetchUsers, postUser, deleteUser, updateUser } from "./epics/users";
 import { chekinsReducer } from "./ducks/chekins";
 import { usersReducer } from "./ducks/users";
+import { reducer as formReducer } from 'redux-form'
+import { authReducer } from "./ducks/auth";
+import { getUser,logoutUser, loginUser } from "./epics/auth";
 
 
 
 export const configureStore=()=>{
 
-    const rootEpic = combineEpics(
-        fetchBeersEpic,
+    const rootEpic = combineEpics(        
         fetchChekins,
-        fetchUsers
+        postChekin,
+        deleteChekin,
+        updateChekin,
+        fetchUsers,
+        postUser,
+        deleteUser,
+        updateUser,
+        getUser,
+        logoutUser,
+        loginUser
+
         )
 
     const epicMiddleware = createEpicMiddleware()
 
     const rootReducer = combineReducers({        
-        beers:beersReducer,
-        config:configReducer,
+                
+        auth:authReducer,
         chekins:chekinsReducer,
-        users:usersReducer
+        users:usersReducer,
+        form:formReducer
     })
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

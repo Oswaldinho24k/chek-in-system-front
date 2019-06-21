@@ -9,6 +9,7 @@ import UsersPage from './components/users/UsersPage';
 export const Routes = () => {
     return (
         <Switch>
+            <Route exact path={'/'} component={LoginPage}/>
             <Route path={'/login'} component={LoginPage}/>
             <Route path={'/dashboard'} component={DashboardPage}/>            
             {/* <Route path={'/dashboard'} render={props => user ? (<DashboardPage {...props} />) : (<Redirect to={'/login'}/>)}/>             */}

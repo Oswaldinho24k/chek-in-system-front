@@ -1,37 +1,58 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import {Form} from 'antd'
+import { Field, reduxForm } from 'redux-form'
+import { Input, Button, Divider } from 'antd';
 import {Link} from 'react-router-dom'
 
-const LoginForm = ({handleChange, handleSubmit}) => {
-    return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Item>
-                <Input
-                name={'email'}
-                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Email"
-                />    
-            </Form.Item>
-            <Form.Item>            
-                <Input
-                name={'password'}
-                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                type="password"
-                placeholder="Password"
-                />            
-            </Form.Item>
-            <Form.Item>           
-            <Link disabled className="login-form-forgot" to="/login">
-                Forgot password
-            </Link> <br/>
-            <Button block type="primary" htmlType="submit" className="login-form-button">
-                Log in
-            </Button>
-            <br/>
-            Or <Link disabled to="/login">Contact the Admin</Link>
-        </Form.Item>
-      </Form>
+
+
+const TextInput = ({ input, type, label, meta: { touched, error }, ...custom }) =>{
+    return(        
+        <Input
+            type={type}
+            style={{ width: 200, marginRight:'10px' }}
+            placeholder={label}            
+            {...input}
+            {...custom}
+        />
     )
 }
 
-export default LoginForm
+
+
+
+
+const LoginForm = ({handleSubmit}) => {
+   
+      
+    return (
+        <Form onSubmit={handleSubmit}>            
+                <Form.Item>
+                    <Field 
+                    name="email" 
+                    component={TextInput}
+                    type={'email'}
+                    label="Email"/>
+                </Form.Item>                    
+                
+                <Form.Item>
+                    <Field 
+                    name="password" 
+                    type={'password'}
+                    component={TextInput}
+                    label="Password"/>       
+                </Form.Item>
+                <Button type="primary" htmlType="submit">LogIn</Button>
+                
+                <Divider/>     
+                <Link to="/" disabled>
+                    Contact your admin for access
+                </Link>
+                     
+            
+            
+        </Form>
+    )
+}
+
+export default reduxForm({form: 'loginForm'})(LoginForm)
