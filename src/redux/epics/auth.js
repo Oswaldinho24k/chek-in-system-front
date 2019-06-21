@@ -6,8 +6,8 @@ import { concat, of } from 'rxjs';
 import {message} from 'antd'
 import { LOGIN, LOGOUT, fetchUserSuccess, loginSuccess, logoutSuccess, fetchFailed, setStatus } from '../ducks/auth';
 
-//let baseUrl = 'https://runa-chekin.herokuapp.com/users/'
-let baseUrl = 'http://localhost:3000/users/'
+let baseUrl = 'https://runa-chekin.herokuapp.com/users/'
+//let baseUrl = 'http://localhost:3000/users/'
 
 export const getUser=(action$, state$)=>{           
     const loguedUser = JSON.parse(localStorage.getItem('loguedUser'))

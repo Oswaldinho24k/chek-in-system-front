@@ -5,8 +5,8 @@ import { concat, of } from 'rxjs';
 import {fetchChekinsSuccess, postSuccess, fetchFailed, setStatus,POST, UPDATE, DELETE, updateSuccess, deleteSuccess} from '../ducks/chekins'
 import {message} from 'antd'
 
-//let baseUrl = 'https://runa-chekin.herokuapp.com/chekins/'
-let baseUrl = 'http://localhost:3000/chekins/'
+let baseUrl = 'https://runa-chekin.herokuapp.com/chekins/'
+//let baseUrl = 'http://localhost:3000/chekins/'
 
 
 export const fetchChekins=(action$, state$)=>{           

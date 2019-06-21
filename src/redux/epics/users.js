@@ -5,8 +5,8 @@ import { concat, of } from 'rxjs';
 import {fetchUsersSuccess, postSuccess, fetchFailed, setStatus,POST, UPDATE, DELETE, updateSuccess, deleteSuccess} from '../ducks/users'
 import {message} from 'antd'
 
-//let baseUrl = 'https://runa-chekin.herokuapp.com/users/'
-let baseUrl = 'http://localhost:3000/users/'
+let baseUrl = 'https://runa-chekin.herokuapp.com/users/'
+//let baseUrl = 'http://localhost:3000/users/'
 
 export const fetchUsers=(action$, state$)=>{           
         return ajax.getJSON(baseUrl).pipe(
